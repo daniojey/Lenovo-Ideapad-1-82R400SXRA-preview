@@ -3,6 +3,11 @@
 <body>
     <head>
         <link rel="stylesheet" href="{% static "css/homepage.css" %}">
+        <link rel="stylesheet" href="{% static "css/first_block.css" %}">
+        <link rel="stylesheet" href="{% static "css/second_block.css" %}">
+        <link rel="stylesheet" href="{% static "css/three_block.css" %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lenovo ideapad 1</title>
     </head>
     <header>
         <div class='site-logo-base'>
@@ -16,6 +21,107 @@
         </ul>
     </header>
     
-    
+    <section id="hero">
+        <h1 id="model-name">Lenovo ideapad 1</h1>
+        <h2 id="model-name-detail">(82R400SXRA)</h2>
+        <img id="laptop" src="{% static "image/lenovo_front.jpg" %}" alt="Ноутбук" class='laptop-hero'>
+    </section>
+
+    <div id="features">
+        <h2 id="features-title" class="hidden">Характеристики</h2>
+        
+        <div class='features-column-group'>
+            <!-- Левая колонка -->
+            <div class="features-column left">
+                <div class='features-item-column-left'>
+                    <div class="feature-block hidden"><img src="{% static "icons/cpu-32.ico" %}" alt="cpu"> <div class='feature-block-text'>AMD Ryzen 7 5700U</div></div>
+                    <div class="feature-block hidden"><img src="{% static "icons/gpu.webp" %}" alt="gpu"> <div class='feature-block-text'>Radeon RX Vega 8</div></div>
+                    <div class="feature-block hidden"><img src="{% static "icons/ram.png" %}" alt="ram"><div class='feature-block-text'>16 ГБ, DDR4-3200 МГц</div></div>
+                </div>
+            </div>
+            
+            <!-- Правая колонка -->
+            <div class="features-column right">
+                <div class='features-item-column-right'>
+                    <div class="feature-block hidden"><img src="{% static "icons/display.svg" %}" alt="display"><div class='feature-block-text'>15.6", FHD, IPS, 60 Гц</div></div>
+                    <div class="feature-block hidden"><img src="{% static "icons/ssd.png" %}" alt="ssd"><div class='feature-block-text'>M.2 SSD 512ГБ</div></div>
+                    <div class="feature-block hidden"><img src="{% static "icons/bluetooth.jpg" %}" alt="bluetooth"><div class='feature-block-text'>Bluetooth 5.2</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='cpu-futures'>
+        <div class="cpu-image-block">
+            <img src="{% static "image/AMD-Ryzen-cpu.jpg" %}" class='AMD-Ryzen-cpu-image'>
+            <label class="cpu-image-text">Лучший для учёбы и работы. Ryzen 5 5700U имеет превосходную производительность 
+                за свою цену которая позволяет ему без особых усилий справлятся с большинством рабочих задач
+                а также благодаря своему 7 нм техпроцессу даёт возможность работы экрана до 9 часов при максимальной яркости</label>
+        </div>
+        <div class="cpu-scorebars">
+            <h2>Результаты Cinebench 15 Multi-core</h2>
+
+            <h3>ryzen 55700U</h3>
+            <div class='bar Ryzen-55700U-bar' style="--score-width: 60%;"><label class='Cinebench-score'>1484</label></div>
+            <h3>ryzen 55500U</h3>
+            <div class='bar Ryzen-55500U-bar' style="--score-width: 50%;" ><label class='Cinebench-score'>1247</label></div>
+            <h3>i5 1235U</h3>
+            <div class='bar i5-1235U-bar' style="--score-width: 45%;"><label class='Cinebench-score'>1094</label></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("scroll", function () {
+            let laptop = document.getElementById("laptop");
+            let featuresSection = document.getElementById("features");
+            let detailSection = document.querySelector(".cpu-futures"); // Блок после характеристик
+            let featureBlocks = document.querySelectorAll(".feature-block");
+            let featureTitle = document.getElementById("features-title");
+        
+            let featuresTop = featuresSection.getBoundingClientRect().top;
+            let detailTop = detailSection.getBoundingClientRect().top; // Верхняя граница следующего блока
+        
+            // ✅ Снимаем блюр с ноутбука, когда он доходит до центра второго блока
+            if (featuresTop <= window.innerHeight / 2) {
+                laptop.style.filter = "blur(0)";
+            } else {
+                laptop.style.filter = "blur(10px)";
+            }
+        
+            // ✅ Показываем заголовок и характеристики ПО ОЧЕРЕДИ
+            if (featuresTop <= window.innerHeight / 3) {
+                featureTitle.classList.add("show");
+                featureBlocks.forEach((block, index) => {
+                    setTimeout(() => {
+                        block.classList.add("show");
+                    }, index * 200); // Добавляем задержку появления каждого блока
+                });
+            }
+        
+            // ✅ Исчезновение ноутбука при скролле вниз
+            if (detailTop <= window.innerHeight / 1.2) {
+                laptop.style.opacity = "0";
+                laptop.style.transition = "opacity 0.3s ease-out";
+            } else {
+                laptop.style.opacity = "1"; // Если вернулись назад, показываем снова
+            }
+        }); 
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const bars = document.querySelectorAll(".bar");
+          
+            const observer = new IntersectionObserver(entries => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("animate"); // Добавляем класс для анимации
+                }
+              });
+            }, { threshold: 0.9 }); // Запуск, когда блок наполовину виден
+          
+            bars.forEach(bar => observer.observe(bar));
+          });
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,155 @@
+:root {
+    --index: calc(1vh + 1vw)
+}
+
+/* 📌 Блок с характеристиками */
+.feature-block {
+    /* width: 220px; */
+    /* min-width: 230px; */
+    display: flex;
+    padding: 15px 10px 15px 10px;
+    border-radius: 10px;
+    box-shadow: 10px 4px 10px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    z-index: 10;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+}
+
+.feature-block img{
+    width: 25px;
+    height: 25px;
+    margin-right: 13px;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.feature-block-text {
+    height: 100%;
+}
+
+
+/* 📌 Показываем блоки */
+.feature-block.show {
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+/* 📌 Второй экран */
+#features {
+    height: 100vh;
+    display: flex;
+    gap: 10px; /* Отступ между элементами */
+    flex-direction: column;
+}
+
+#features-title{
+    /* transform: translateY(-700%); */
+    color: rgb(0, 0, 0);
+    font-size: 45px;
+    z-index: 10;
+    width: 100%;
+    transform: translateY(-550%);
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+#features-title.show {
+    opacity: 1;
+}
+
+.features-column-group {
+    width: 100%;
+    display: flex;
+
+}
+
+.features-column {
+    width: 50%;
+}
+
+.features-column.left {
+    text-align: end;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
+}
+
+.features-item-column-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: calc(var(--index) * 16 );
+}
+
+.features-column.right {
+    display: flex;
+    text-align: start;
+    justify-content: start;
+    align-items: center;
+}
+
+.features-item-column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: calc(var(--index) * 16 );
+}
+
+/* 📌 Адаптивность (на телефонах блоки снизу ноутбука) */
+@media (max-width: 1150px) {
+    #features-title {
+        transform: translateY(-100%);
+    }
+
+    #features {
+        height: 80vh;
+    }
+
+    #laptop {
+        position: absolute;
+        filter: blur(0);
+    }
+
+    .feature-block {
+        width: calc(var(--index) * 20 );
+        padding: 15px 5px 15px 5px;
+        font-size: calc(var(--index) * 1.25);
+    }
+
+    .features-column-group {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+    }
+
+    .features-item-column-left{
+        padding-right: 0;
+        gap: 15px;
+    }
+
+    .features-item-column-right{
+        padding-left: 0;
+        gap: 15px;
+    }
+
+    .features-column.left{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    .features-column.right{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+}

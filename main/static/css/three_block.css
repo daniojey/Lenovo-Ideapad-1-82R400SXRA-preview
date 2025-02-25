@@ -1,0 +1,118 @@
+.cpu-futures {
+    height: 100vh;
+}
+
+.cpu-image-block {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Блок с картинкой и текстом */
+.AMD-Ryzen-cpu-image{
+    display: flex;
+    width: 99vw;
+    max-height: 400px;
+    object-fit: cover;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    filter: brightness(50%) blur(8px);
+}
+
+.cpu-image-text{
+    display: flex;
+    width: 80%;
+    position: absolute;
+    top: 50%; /* Размещаем по центру */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрируем по X и Y */
+    color: white;
+    padding: 10px 15px;
+    font-size: calc(var(--index) * 1.10);
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Графики */
+.cpu-scorebars {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+
+.Ryzen-55700U-bar {
+    display: flex;
+    position: relative;
+    width: 0%;
+    height: 34px;
+    background-color: orange;
+    transition: width 1.5s ease-out;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    
+}
+
+
+.i5-1235U-bar {
+    display: flex;
+    position: relative;
+    width: 0%;
+    height: 34px;
+    background-color: aqua;
+    transition: width 1.5s ease-out;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+
+.Ryzen-55500U-bar {
+    display: flex;
+    position: relative;
+    width: 0%;
+    height: 34px;
+    background-color: orange;
+    transition: width 1.5s ease-out;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.cpu-scorebars h2 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.cpu-scorebars h3{
+    opacity: 1;
+    margin: 5px 0px 5px 0px;
+}
+
+.Cinebench-score {
+    display: flex;
+    font-size: 20px;
+    position: absolute;
+    opacity: 0; /* Скрываем текст */
+    transition: opacity 0.8s ease-in 1s; /* Плавное появление */
+}
+
+
+/* Когда класс .animate добавляется через JS */
+.animate {
+    width: var(--score-width); /* Динамическая ширина */
+  }
+  
+.animate .Cinebench-score {
+    opacity: 1;
+}
