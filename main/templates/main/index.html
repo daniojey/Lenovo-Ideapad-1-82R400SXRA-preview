@@ -1,23 +1,29 @@
+<!DOCTYPE html>
 <html>
 {% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'icons/favicon.ico' %}"/>
 <body>
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="{% static "css/homepage.css" %}">
         <link rel="stylesheet" href="{% static "css/first_block.css" %}">
         <link rel="stylesheet" href="{% static "css/second_block.css" %}">
         <link rel="stylesheet" href="{% static "css/three_block.css" %}">
+        <link rel="stylesheet" href="{% static "css/four_block.css" %}">
+        <link rel="stylesheet" href="{% static "css/five_block.css" %}">
+        <link rel="stylesheet" href="{% static "css/footer.css" %}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <title>Lenovo ideapad 1</title>
     </head>
     <header>
         <div class='site-logo-base'>
-            <h3>MYSITE</h3>
+            <h3>Ideapad</h3>
         </div>
 
         <ul class='header-items'>
-            <li>hello</li>
-            <li>hi</li>
-            <li>me</li>
+            <li><a href="https://shop.lenovo.ua/notebooks/noutbuk-lenovo-ideapad-1-15alc7-cloud-grey-82r400sxra.html#prodDetails">Go to site</a></li>
         </ul>
     </header>
     
@@ -54,23 +60,118 @@
     <div class='cpu-futures'>
         <div class="cpu-image-block">
             <img src="{% static "image/AMD-Ryzen-cpu.jpg" %}" class='AMD-Ryzen-cpu-image'>
-            <label class="cpu-image-text">Лучший для учёбы и работы. Ryzen 5 5700U имеет превосходную производительность 
+            <label class="cpu-image-text">Прекрасный для учёбы и работы. Ryzen 5 5700U имеет превосходную производительность 
                 за свою цену которая позволяет ему без особых усилий справлятся с большинством рабочих задач
                 а также благодаря своему 7 нм техпроцессу даёт возможность работы экрана до 9 часов при максимальной яркости</label>
         </div>
         <div class="cpu-scorebars">
             <h2>Результаты Cinebench 15 Multi-core</h2>
 
-            <h3>ryzen 55700U</h3>
-            <div class='bar Ryzen-55700U-bar' style="--score-width: 60%;"><label class='Cinebench-score'>1484</label></div>
-            <h3>ryzen 55500U</h3>
-            <div class='bar Ryzen-55500U-bar' style="--score-width: 50%;" ><label class='Cinebench-score'>1247</label></div>
+            <h3>ryzen 5 5700U</h3>
+            <div class='bar Ryzen-55700U-bar' style="--score-width: 60%; --score-bar: 90%;"><label class='Cinebench-score'>1484</label></div>
+            <h3>ryzen 5 5500U</h3>
+            <div class='bar Ryzen-55500U-bar' style="--score-width: 50%; --score-bar: 80%;" ><label class='Cinebench-score'>1247</label></div>
             <h3>i5 1235U</h3>
-            <div class='bar i5-1235U-bar' style="--score-width: 45%;"><label class='Cinebench-score'>1094</label></div>
+            <div class='bar i5-1235U-bar' style="--score-width: 45%; --score-bar: 75%;"><label class='Cinebench-score'>1094</label></div>
         </div>
     </div>
 
+    <div class="swiper-block-laptop">
+        <!-- Slider main container -->
+        <div class="swiper slider">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide slide"><img src="{% static "image/lenovo_front.jpg" %}" class='swiper-image'></div>
+                <div class="swiper-slide slide"><img src="{% static "image/laptop_right_side.webp" %}"  class='swiper-image'></div>
+                <div class="swiper-slide slide"><img src="{% static "image/laptop_top_side.webp" %}" class='swiper-image'></div>
+                ...
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+        
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+
+    <div class="base-information-block">
+        <div class='base-container-links'>
+            <ul class='base-information-links'>
+                <li class="tab-btn active" data-tab="1">Экран</li>
+                <li class="tab-btn" data-tab="2">Батарея</li>
+                <li class="tab-btn" data-tab="3">Порты</li>
+            </ul>
+        </div>
+
+        <div class='base-information-items'>
+            <div class="tab-content active" id="tab-1">
+                <div class='display-info__block'>
+                    <div class="text">
+                        <p>Ноутбук Lenovo IdeaPad 1 (82R400SXRA) оснащён 15.6-дюймовым экраном
+                             с разрешением Full HD (1920×1080). Матовый дисплей снижает блики и отражения, 
+                             обеспечивая комфортную работу даже при ярком освещении. Технология IPS гарантирует быструю отклик матрицы и хорошие 
+                             углы обзора изобржения,а LED-подсветка делает изображение ярким и чётким.
+                        </p>
+                    </div>
+
+                    <div class='info'>
+                        <p>Диагональ | 15.6</p>
+                        <p>Разширение | 1920x1080</p>
+                        <p>Тип матрицы | IPS</p>
+                        <p>Покрытие экрана | Матовое</p>
+                        <p>Контраст | 700:1</p>
+                        <p>Частота обновления | 60Гц</p>
+                        <p>Время реакции | 8мс</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-2">
+                <div class='battery-info__block'>
+                    <p>
+                        Устройство оборудовано встроенным аккумулятором ёмкостью 42 Вт·ч,
+                        что обеспечивает до 9 часов автономной работы в зависимости от нагрузки. 
+                        Энергоэффективные компоненты и продвинутая система энергосбережения позволяют продлить
+                        время работы от батареи, а поддержка быстрой зарядки сокращает время восполнения заряда.
+                    </p>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-3">
+                <div class="ports-info__block">
+                    <h2 class='title'> Lenovo IdeaPad 1 (82R400SXRA) предлагает все необходимые порты для подключения периферии:</h2>
+
+                    <ul class='ports-list'>
+                        <li class='port'>USB Type-A | 1x USB 3.2 Gen 1 , 1x USB 2.0 </li>
+                        <li class='port'>USB Type-C | 1x USB-C 3.2 Gen 1</li>
+                        <li class='port'>HDMI | 1</li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <div class='footer-links'>
+            <ul class='footer-links-list'>
+                <li><a href="https://github.com/daniojey" class='link github'><img src="{% static "icons/github.png" %}" class='link__image'></a></li>
+                <a href="https://www.instagram.com/saymios/" class='link instagram'><img src="{% static "icons/instagram.png" %}" class='link__image'></a>
+                <li><a href="https://t.me/Saymios" class='link telegram'><img src="{% static "icons/telegram.webp" %}" class='link__image'></a></li>
+            </ul>
+        </div>
+
+        <div class='footer-official-site'>
+            <a href="https://shop.lenovo.ua/notebooks/noutbuk-lenovo-ideapad-1-15alc7-cloud-grey-82r400sxra.html#prodDetails">Lenovo official shop</a>
+        </div>
+
+        
+    </footer>
+
     <script>
+        let hideTimeout; // Переменная для таймера
+
         document.addEventListener("scroll", function () {
             let laptop = document.getElementById("laptop");
             let featuresSection = document.getElementById("features");
@@ -85,7 +186,7 @@
             if (featuresTop <= window.innerHeight / 2) {
                 laptop.style.filter = "blur(0)";
             } else {
-                laptop.style.filter = "blur(10px)";
+                laptop.style.filter = "blur(15px)";
             }
         
             // ✅ Показываем заголовок и характеристики ПО ОЧЕРЕДИ
@@ -98,15 +199,87 @@
                 });
             }
         
-            // ✅ Исчезновение ноутбука при скролле вниз
             if (detailTop <= window.innerHeight / 1.2) {
+                // ✅ Убираем ноутбук плавно
                 laptop.style.opacity = "0";
-                laptop.style.transition = "opacity 0.3s ease-out";
-            } else {
-                laptop.style.opacity = "1"; // Если вернулись назад, показываем снова
-            }
-        }); 
+            
+                // ❗ Ждём завершения анимации перед display: none
+                clearTimeout(hideTimeout);
+                hideTimeout = setTimeout(() => {
+                  laptop.style.display = "none";
+                }, 500); // Подожди 0.5s, пока `opacity` дойдёт до 0
+              } else {
+                // ✅ Показываем ноутбук обратно
+                clearTimeout(hideTimeout); // Отменяем скрытие, если ноут должен остаться
+                laptop.style.display = "block";
+                setTimeout(() => {
+                  laptop.style.opacity = "1";
+                }, 10); // Небольшая задержка, чтобы `display: block;` сработал корректно
+              }
+            }); 
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const laptop = document.getElementById("laptop");
+            const hero = document.getElementById("hero");
+            const features = document.getElementById("features");
+          
+            function isElementInViewport(el) {
+              const rect = el.getBoundingClientRect();
+              return (
+                rect.top >= 0 &&
+                rect.bottom <= window.innerHeight
+              );
+            }
+          
+            // Проверяем, находится ли #hero или #features в зоне видимости
+            if (isElementInViewport(hero) || isElementInViewport(features)) {
+              laptop.style.display = "block"; // Показываем ноутбук
+              setTimeout(() => {
+                laptop.style.opacity = "1"
+              }, 500);
+            }
+          });          
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const buttons = document.querySelectorAll(".tab-btn");
+            const contents = document.querySelectorAll(".tab-content");
+          
+            buttons.forEach(button => {
+              button.addEventListener("click", function () {
+                const tabNumber = this.dataset.tab;
+          
+                // Удаляем класс "active" у всех кнопок и контентов
+                buttons.forEach(btn => btn.classList.remove("active"));
+                contents.forEach(content => content.classList.remove("active"));
+          
+                // Добавляем класс "active" для выбранной вкладки
+                this.classList.add("active");
+                document.getElementById(`tab-${tabNumber}`).classList.add("active");
+              });
+            });
+          });
+    </script>
+
+    <script>
+        const swiper = new Swiper('.swiper', {
+            speed: 1300,
+            loop: true,
+            navigation: {
+              nextEl: '.swiper-button-next',  // кнопка следующего слайда
+              prevEl: '.swiper-button-prev',  // кнопка предыдущего слайда
+            },
+            pagination: {
+              el: '.swiper-pagination',  // индикаторы пагинации
+              clickable: true,  // позволяет кликать по индикаторам для перехода к слайду
+            },
+            // Другие опции, которые тебе могут понадобиться
+          });
+    </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const bars = document.querySelectorAll(".bar");
