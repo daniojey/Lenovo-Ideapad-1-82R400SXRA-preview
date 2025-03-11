@@ -1,5 +1,5 @@
 <h3 align="center">Lenevo ideapad 1 (preview site)</h3>
-<p align="center">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+<p align="center">_</p>
 <p align="center" style="border-radius: 20%; border: 2px solid #ccc;">
   <img src="https://teststepbucket.s3.eu-north-1.amazonaws.com/laptop_front.png" style="border-radius: 20%;" alt="Пример работы" />
 </p>
