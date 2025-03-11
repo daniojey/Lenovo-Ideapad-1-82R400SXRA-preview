@@ -169,99 +169,24 @@
         
     </footer>
 
-    <script>
-        let hideTimeout; // Переменная для таймера
-
-        document.addEventListener("scroll", function () {
-            let laptop = document.getElementById("laptop");
-            let featuresSection = document.getElementById("features");
-            let detailSection = document.querySelector(".cpu-futures"); // Блок после характеристик
-            let featureBlocks = document.querySelectorAll(".feature-block");
-            let featureTitle = document.getElementById("features-title");
-        
-            let featuresTop = featuresSection.getBoundingClientRect().top;
-            let detailTop = detailSection.getBoundingClientRect().top; // Верхняя граница следующего блока
-        
-            // ✅ Снимаем блюр с ноутбука, когда он доходит до центра второго блока
-            if (featuresTop <= window.innerHeight / 2) {
-                laptop.style.filter = "blur(0)";
-            } else {
-                laptop.style.filter = "blur(15px)";
-            }
-        
-            // ✅ Показываем заголовок и характеристики ПО ОЧЕРЕДИ
-            if (featuresTop <= window.innerHeight / 3) {
-                featureTitle.classList.add("show");
-                featureBlocks.forEach((block, index) => {
-                    setTimeout(() => {
-                        block.classList.add("show");
-                    }, index * 200); // Добавляем задержку появления каждого блока
-                });
-            }
-        
-            if (detailTop <= window.innerHeight / 1.2) {
-                // ✅ Убираем ноутбук плавно
-                laptop.style.opacity = "0";
-            
-                // ❗ Ждём завершения анимации перед display: none
-                clearTimeout(hideTimeout);
-                hideTimeout = setTimeout(() => {
-                  laptop.style.display = "none";
-                }, 500); // Подожди 0.5s, пока `opacity` дойдёт до 0
-              } else {
-                // ✅ Показываем ноутбук обратно
-                clearTimeout(hideTimeout); // Отменяем скрытие, если ноут должен остаться
-                laptop.style.display = "block";
-                setTimeout(() => {
-                  laptop.style.opacity = "1";
-                }, 10); // Небольшая задержка, чтобы `display: block;` сработал корректно
-              }
-            }); 
-    </script>
+    <script src="{% static "js/laptop_animation.js" %}"></script>
+    <script src="{% static "js/laptop_position_check.js" %}"></script>
+    <script src="{% static "js/tab_controller.js" %}"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const laptop = document.getElementById("laptop");
-            const hero = document.getElementById("hero");
-            const features = document.getElementById("features");
-          
-            function isElementInViewport(el) {
-              const rect = el.getBoundingClientRect();
-              return (
-                rect.top >= 0 &&
-                rect.bottom <= window.innerHeight
-              );
+        const bars = document.querySelectorAll(".bar");
+      
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate"); // Добавляем класс для анимации
             }
-          
-            // Проверяем, находится ли #hero или #features в зоне видимости
-            if (isElementInViewport(hero) || isElementInViewport(features)) {
-              laptop.style.display = "block"; // Показываем ноутбук
-              setTimeout(() => {
-                laptop.style.opacity = "1"
-              }, 500);
-            }
-          });          
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const buttons = document.querySelectorAll(".tab-btn");
-            const contents = document.querySelectorAll(".tab-content");
-          
-            buttons.forEach(button => {
-              button.addEventListener("click", function () {
-                const tabNumber = this.dataset.tab;
-          
-                // Удаляем класс "active" у всех кнопок и контентов
-                buttons.forEach(btn => btn.classList.remove("active"));
-                contents.forEach(content => content.classList.remove("active"));
-          
-                // Добавляем класс "active" для выбранной вкладки
-                this.classList.add("active");
-                document.getElementById(`tab-${tabNumber}`).classList.add("active");
-              });
-            });
           });
+        }, { threshold: 0.9 }); // Запуск, когда блок наполовину виден
+      
+        bars.forEach(bar => observer.observe(bar));
+      });
     </script>
 
     <script>
@@ -280,21 +205,6 @@
           });
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const bars = document.querySelectorAll(".bar");
-          
-            const observer = new IntersectionObserver(entries => {
-              entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("animate"); // Добавляем класс для анимации
-                }
-              });
-            }, { threshold: 0.9 }); // Запуск, когда блок наполовину виден
-          
-            bars.forEach(bar => observer.observe(bar));
-          });
-    </script>
 
 </body>
 </html>
